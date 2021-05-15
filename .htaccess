@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
+ErrorDocument 404 https://www.paulin.fi/404.html
+# Cache certain files for two weeks
+<filesMatch "\.(ico|pdf|jpg|jpeg|png|gif|js)$">
+    Header set Cache-Control "max-age=1209600, public"
+</filesMatch>
